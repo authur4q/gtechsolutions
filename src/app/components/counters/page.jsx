@@ -10,7 +10,7 @@ function Counters() {
       useEffect(() => {
         const productsData = async () => {
           try {
-            const res = await fetch("http://localhost:3000/api/category?category=Counters");
+            const res = await fetch("/api/category?category=Counters");
             const data = await res.json();
             const formattedData = Array.isArray(data) ? data : (data.products || []);
             setProducts(formattedData);
