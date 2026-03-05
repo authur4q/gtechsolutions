@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 import Shelves from "./components/shelves/page";
 import Trolleys from "./components/trolleys/page";
 import Baskets from "./components/baskets/page";
-import POS from "./components/pos/page";
+import Pos from "./components/pos/page";
 import Pricetags from "./components/pricetags/page";
 import Chillers from "./components/chillers/page";
 import Fridges from "./components/fridges/page";
@@ -76,7 +76,7 @@ export default function Home() {
       case "baskets":
         return <Baskets />;
       case "pos":
-        return <POS />; 
+        return <Pos />; 
       case "pricetags":
         return <Pricetags />;
       case "chillers":
