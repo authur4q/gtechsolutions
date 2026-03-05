@@ -16,7 +16,7 @@ const { id } = useParams();
 
 useEffect(() => {
     const fetchData = async() =>{
-        const res = await fetch(`http://localhost:3000/api/books/${id}`);
+        const res = await fetch(`/api/books/${id}`);
         if(res.ok){
             const data = await res.json();
             setProduct(data);
