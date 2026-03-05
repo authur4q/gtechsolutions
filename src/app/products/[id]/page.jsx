@@ -17,10 +17,8 @@ const { id } = useParams();
 useEffect(() => {
     const fetchData = async() =>{
         const res = await fetch(`http://localhost:3000/api/books/${id}`);
-        console.log(res)
         if(res.ok){
             const data = await res.json();
-            console.log(data)
             setProduct(data);
             setStockLevel(data.stockLevel);
         } else {
@@ -67,20 +65,19 @@ const handleMinus = () => {
         
       <div className={styles.wrapper}>
             <div className={styles.productImage}>
-                <Image className={styles.productImagemain} style={{ objectFit: 'cover' }}  sizes="(max-width: 768px) 100vw, 200px" src={product?.imageUrl[0]} alt="Product Image" width={950} height={400} />
+            
+               {product?.imageUrl && product.imageUrl[0] && 
+               (
+                 <Image className={styles.productImagemain} style={{ objectFit: 'cover' }}  sizes="(max-width: 768px) 100vw, 200px" src={product.imageUrl[0]} alt="Product Image" width={950} height={400} />
+               )}
                
                     <div className={styles.imageangles}>
-                        {product?.imageUrl?.map((image)=>(
-                             <div key={image._id} >
-                              <Image style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 200px"   src={image } alt="Product Image" width={200} height={200} />
+                        {product?.imageUrl?.map((image, index)=>(
+                             <div key={index} >
+                              <Image style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 200px"   src={image} alt={`Product Image ${index}`} width={200} height={200} />
                              </div>
                         ))}
                     </div>
-
-                    
-
-
-
             </div>
             <div className={styles.productDetails}>
                 <h2>Ksh {pricePerUnit.toLocaleString()}</h2>
