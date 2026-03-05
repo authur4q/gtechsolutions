@@ -11,7 +11,7 @@ function Pricetags() {
       useEffect(() => {
         const productsData = async () => {
           try {
-            const res = await fetch("/category?category=Pricetags");
+            const res = await fetch("/api/category?category=Pricetags");
             const data = await res.json();
             const formattedData = Array.isArray(data) ? data : (data.products || []);
             setProducts(formattedData);
