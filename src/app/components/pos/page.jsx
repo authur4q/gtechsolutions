@@ -10,7 +10,7 @@ function Pos() {
       useEffect(() => {
         const productsData = async () => {
           try {
-            const res = await fetch("/api/category?category=Pos");
+            const res = await fetch("/api/category?category=POS");
             const data = await res.json();
             const formattedData = Array.isArray(data) ? data : (data.products || []);
             setProducts(formattedData);
