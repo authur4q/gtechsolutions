@@ -93,7 +93,7 @@ export default function Home() {
   useEffect(() => {
     const productsData = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/books");
+        const res = await fetch("/api/books");
         const data = await res.json();
         const formattedData = Array.isArray(data) ? data : (data.products || []);
         setProducts(formattedData);
