@@ -1,0 +1,87 @@
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: green;
+    height: 60px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-bottom: 2px solid white;
+    box-sizing: border-box;
+}
+
+.logo h1 {
+    font-style: italic;
+    color: black;
+    font-weight: 300;
+    margin: 0;
+}
+
+
+.menuTrigger {
+    display: none; 
+    background: transparent;
+    color: white;
+    font-size: 1.8rem;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* --- Links Container --- */
+.links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.links a, .authBtn {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: color 0.2s;
+}
+
+.links a:active {
+    color: rgb(220, 4, 4);
+    text-decoration: underline;
+}
+
+
+@media (max-width: 768px) {
+    .menuTrigger {
+        display: block;
+    }
+
+    .links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: green;
+        padding: 20px 0;
+        gap: 20px;
+        border-bottom: 2px solid white;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    }
+
+  
+    .links.menuOpen {
+        display: flex;
+    }
+
+    .authBtn, .links a {
+        font-size: 1.3rem; 
+        width: 100%;
+        text-align: center;
+    }
+}

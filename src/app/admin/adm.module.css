@@ -1,0 +1,135 @@
+
+.formContainer {
+  background: #dfdcdc;
+  padding: 1.5rem;
+  display: flex;
+  margin-top: 3px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  border-radius: 12px;
+  width: 92%; 
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+
+.input, .textarea, .select {
+  width: 100%; 
+  padding: 12px 16px;
+  border: 1.5px solid #09e201;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  outline: none;
+  background-color: #fafafa;
+  box-sizing: border-box; 
+}
+
+
+.priceStockContainer {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+}
+
+.priceStockContainer input {
+  width: 48%; 
+}
+
+.uploadButton, .submitButton {
+  width: 100%; 
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .formContainer {
+    padding: 2rem;
+    width: auto; 
+  }
+
+
+  .input, .textarea, .select {
+    width: 60%; 
+  }
+
+  .uploadButton {
+    width: auto; 
+    padding: 12px 24px;
+  }
+
+
+  .priceStockContainer input {
+    width: 28%; 
+  }
+
+  .submitButton {
+    width: auto;
+    padding: 14px 40px;
+  }
+}
+
+.input:hover, .textarea:hover, .select:hover {
+  background-color: #ebeaea;
+}
+
+.input::placeholder, .textarea::placeholder {
+  color: #696767;
+  font-style: italic;
+}
+
+.textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.uploadButton {
+  background-color: rgba(0, 0, 0, 0.87);
+  color: white;
+  transition: background 0.2s;
+}
+
+.uploadButton:hover {
+  background-color: black;
+}
+
+.imagePreviewContainer {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.imagePreview {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.submitButton {
+  background-color: #00f335;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: transform 0.1s, background 0.2s;
+  margin-top: 10px;
+}
+
+.submitButton:hover {
+  background-color: #00c510;
+}

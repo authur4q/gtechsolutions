@@ -1,0 +1,128 @@
+.searchComponent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    height: 250px;
+    background: linear-gradient(135deg, #008000, #00a500); 
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    color: white;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.searchComponent h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+
+.search {
+    display: flex;
+    flex-direction: column;
+    position: relative; 
+    width: 100%;
+    max-width: 450px;
+}
+
+.search input {
+    padding: 14px 20px;
+    width: 100%;
+    font-size: 16px;
+    background-color: white;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    color: #333;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search input:focus {
+    border-color: #00ff55;
+    box-shadow: 0 0 0 4px rgba(0, 255, 85, 0.2);
+}
+
+
+.searchResults {
+    position: absolute; 
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    background-color: white;
+    max-height: 350px;
+    overflow-y: auto;
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    animation: fadeIn 0.2s ease-out;
+}
+
+
+.resultItem {
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background 0.2s;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.resultItem:last-child {
+    border-bottom: none;
+}
+
+.resultItem:hover {
+    background-color: rgba(0, 128, 0, 0.05);
+}
+
+.resultItem h2 {
+    font-size: 1.05rem;
+    margin: 0 0 4px 0;
+    color: #1a1a1a;
+}
+
+.resultItem p {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0;
+    line-height: 1.4;
+   
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+
+.noResults {
+    position: absolute;
+    top: calc(100% + 10px);
+    width: 100%;
+    background: white;
+    color: #555;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+
+.searchResults::-webkit-scrollbar {
+    width: 6px;
+}
+
+.searchResults::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
