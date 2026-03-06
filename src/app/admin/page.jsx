@@ -90,6 +90,7 @@ export default function AddProduct() {
         <option value="Fridges">Fridges</option>
         <option value="Counters">Counters</option>
         <option value="POS">POS</option>
+        <option value="Generators">Generators</option>
         
       </select>
       
