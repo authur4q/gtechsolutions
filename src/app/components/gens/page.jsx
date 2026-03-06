@@ -11,7 +11,7 @@ function Generators() {
       useEffect(() => {
         const productsData = async () => {
           try {
-            const res = await fetch("/api/category?category=Trolleys");
+            const res = await fetch("/api/category?category=Generators");
             const data = await res.json();
             const formattedData = Array.isArray(data) ? data : (data.products || []);
             setProducts(formattedData);
