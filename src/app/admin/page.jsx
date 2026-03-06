@@ -1,28 +1,23 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { CldUploadWidget } from 'next-cloudinary';
 import styles from "./adm.module.css"
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
-
 
 export default function AddProduct() {
-  const router = useRouter()
-
-  const {data:session} = useSession()
-  const activeUser = session?.user
-  const role = session?.user?.role
-  console.log(activeUser)
+  const router = useRouter();
+  const { data: session, status } = useSession();
+  const activeUser = session?.user;
+  const role = session?.user?.role;
 
   useEffect(() => {
-      if(!activeUser || role == "user"){
-    router.push("/")
-  }
-  },[activeUser,router,role])
+    if (status === "loading") return;
+    if (!activeUser || role === "user") {
+      router.push("/");
+    }
+  }, [activeUser, router, role, status]);
 
-
-  
   const [formData, setFormData] = useState({ 
     name: '', 
     price: '', 
@@ -34,7 +29,6 @@ export default function AddProduct() {
   });
 
   const handleUploadSuccess = (result) => {
-
     setFormData((prev) => ({
       ...prev,
       imageUrl: [...prev.imageUrl, result.info.secure_url],
@@ -49,11 +43,11 @@ export default function AddProduct() {
       headers: { 'Content-Type': 'application/json' }
     });
     if (res.ok) {
-      
       alert("Product saved!");
-     
     }
   };
+
+  if (status === "loading") return <p>Loading...</p>;
 
   return (
     <form onSubmit={handleSubmit} className={styles.formContainer}>
@@ -89,14 +83,25 @@ export default function AddProduct() {
         <option value="Chillers">Chillers</option>
         <option value="Fridges">Fridges</option>
         <option value="Counters">Counters</option>
+         <option value="Generators">Generators</option>
         <option value="POS">POS</option>
-        <option value="Generators">Generators</option>
-        
       </select>
       
       <CldUploadWidget 
         uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET} 
         onSuccess={handleUploadSuccess}
+        options={{
+          sources: ['local', 'camera'],
+          multiple: true,
+          cropping: false,
+          maxFiles: 6,
+          clientAllowedFormats: ["png", "jpeg", "jpg", "webp"],
+          styles: {
+            container: {
+              zIndex: 100000
+            }
+          }
+        }}
       >
         {({ open }) => (
           <button type="button" className={styles.uploadButton} onClick={() => open()}>
