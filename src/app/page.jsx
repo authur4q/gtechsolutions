@@ -68,15 +68,14 @@ export default function Home() {
 
       case "shelves":
         return <Shelves />; 
-      case "generators":
-        return <Generators />; 
+
 
       case "trolleys":
         return <Trolleys />;
       case "baskets":
         return <Baskets />;
       case "pos":
-        return <Pos />; 
+        return <Pos/>; 
       case "pricetags":
         return <Pricetags />;
       case "chillers":
@@ -85,6 +84,8 @@ export default function Home() {
         return <Fridges />; 
       case "counters":
         return <Counters />; 
+      case "generators":
+        return <Generators />; 
       default:
         return <div className={styles.customComponent}><h2>{activeTab} Section</h2><p>Coming soon...</p></div>;
     }
@@ -93,7 +94,7 @@ export default function Home() {
   useEffect(() => {
     const productsData = async () => {
       try {
-        const res = await fetch("/api/books");
+        const res = await fetch("http://localhost:3000/api/books");
         const data = await res.json();
         const formattedData = Array.isArray(data) ? data : (data.products || []);
         setProducts(formattedData);
