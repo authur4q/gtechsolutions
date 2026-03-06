@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
 import { CldUploadWidget } from 'next-cloudinary';
+import Image from 'next/image';
 import styles from "./adm.module.css"
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
@@ -83,7 +84,7 @@ export default function AddProduct() {
         <option value="Chillers">Chillers</option>
         <option value="Fridges">Fridges</option>
         <option value="Counters">Counters</option>
-         <option value="Generators">Generators</option>
+        <option value="Generators">Generators</option>
         <option value="POS">POS</option>
       </select>
       
@@ -94,12 +95,8 @@ export default function AddProduct() {
           sources: ['local', 'camera'],
           multiple: true,
           cropping: false,
-          maxFiles: 6,
-          clientAllowedFormats: ["png", "jpeg", "jpg", "webp"],
           styles: {
-            container: {
-              zIndex: 100000
-            }
+            container: { zIndex: 100000 }
           }
         }}
       >
@@ -110,9 +107,17 @@ export default function AddProduct() {
         )}
       </CldUploadWidget>
 
-      <div className={styles.imagePreviewContainer}>
+      <div className={styles.imagePreviewContainer} style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
         {formData.imageUrl.map((url, i) => (
-          <img key={i} src={url} className={styles.imagePreview} alt="prev" />
+          <Image 
+            key={i} 
+            src={url} 
+            alt={`Product Preview ${i}`} 
+            width={100} 
+            height={100} 
+            className={styles.imagePreview}
+            style={{ objectFit: 'cover', borderRadius: '8px' }}
+          />
         ))}
       </div>
 
